@@ -1,0 +1,64 @@
+
+.form-conta{
+    // position: absolute;
+    top: 20vh;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.reg{
+    // position: absolute;
+    top: 10vh;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+.strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+.strike > span {
+    position: relative;
+    display: inline-block;
+}
+
+.strike > span:before,
+.strike > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: grey;
+}
+
+.strike > span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.strike > span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+.products-section{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 80px auto 88px;
+
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 60px $guttter;
+
+            .product-price{
+                color: $text-color-light;
+            }
+    }
+}
