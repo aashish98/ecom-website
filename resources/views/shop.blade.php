@@ -39,7 +39,7 @@
 
 @foreach($categories as $category)
 
-  <h4><a href="{{route('cat.show', $category->id)}}" style="color:grey"><div class="product-name">{{$category->name}}</div></a></h4>
+  <h4><a href="{{route('cat.show', $category->id)}}" style="color:grey">{{$category->name}}</a></h4>
 
 @endforeach
 

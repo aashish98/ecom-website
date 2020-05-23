@@ -15,7 +15,7 @@
 <a href="#" style="margin-right: 10px" class="fa fa-twitter"></a>
 <a href="#"  class="fa fa-google"></a>
 @if(Session::get('user'))
-<a class="nav-item nav-link " href="logout" style="float:right">logout </a>
+<a class="nav-item nav-link " href="{{route('logout')}}" style="float:right">logout </a>
     @else
     <a href="/signup" style="float:right">Signup</a>
     @endif

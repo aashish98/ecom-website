@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-sm-6">
 <h1> Edit Category</h1>
-<form method="post" action="update">
+<form method="post" action="update" enctype="multipart/form-data">
 @csrf
   <div class="form-group">
 

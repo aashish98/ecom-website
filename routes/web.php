@@ -45,7 +45,7 @@ Route::get('signup','PagesController@getSignup');
 Route::get('shoppp','PagesController@getShoppp');
 
 Route::post('/signup/submit','UserController@signup');
-Route::get('/logout','UserController@logout');
+Route::get('/logout','UserController@logout')->name('logout');
 Route::group(['middleware'=>'web'], function(){
     Route::get('about','PagesController@getAbout');
     Route::get('contact','PagesController@getContact');
@@ -74,8 +74,9 @@ Route::group(['middleware'=>'web'], function(){
     Route::get('landingPage','PagesController@getlandingPage');
     Route::get('landingPage', 'LandingPageController@index')->name('landingPage');
     Route::get('/shop', 'ShopController@index')->name('shop.index');
+    
+    Route::get('/shop/{id}', 'ShopController@showcat')->name('cat.show')->where('id', '[0-9]+');
     Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
-    Route::get('/shop/{id}', 'ShopController@showcat')->name('cat.show');
   
 });
 Route::get('welcome','PagesController@getWelcome');

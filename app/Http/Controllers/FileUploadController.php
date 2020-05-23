@@ -118,7 +118,7 @@ class FileUploadController extends Controller
         $cat->save();
 
 
-        $req->session()->flash('status','Category Updated successfully');
+        $request->session()->flash('status','Category Updated successfully');
 
         return redirect('list');
 
