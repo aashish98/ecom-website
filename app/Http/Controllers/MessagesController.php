@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
+use App\User;
+
+use Illuminate\Support\Facades\DB;
 
 class MessagesController extends Controller
 {
@@ -28,6 +31,15 @@ class MessagesController extends Controller
     public function getMessages()
     {
         $messages = Message::all();
-        return view('messages')->with('messages',$messages);
+        return view('messageList')->with('messages',$messages);
     }
+    public function actionedit(Request $request, $id)
+    {
+
+        DB::table('messages')->where('id',$id)
+            ->update(['status' => 0]);
+            return redirect('messageList');
+
+    }
+   
 }

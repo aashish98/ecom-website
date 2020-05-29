@@ -16,26 +16,26 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="/img/products/lappy.jpeg" alt="Los Angeles" style="height:700 ;width:1200;">
+        <a href="shop/1"><img src="/img/products/lappy.jpeg" alt="Los Angeles" style="height:700 ;width:1200;"></a>
         <div class="carousel-caption">
           <h3>Laptops</h3>
-          <p>LA is always so much fun!</p>
+          <p>Best Deals on laptops!!</p>
         </div>
       </div>
 
       <div class="item">
-        <img src="/img/products/hedy.jpeg" alt="Chicago" style="height:700 ;width:1200;">
+        <a href="shop/7"><img src="/img/products/hedy.jpeg" alt="Chicago" style="height:700 ;width:1200;"></a>
         <div class="carousel-caption">
           <h3>Headphones</h3>
-          <p>Thank you, Chicago!</p>
+          <p>Best gaming and quality headphones!</p>
         </div>
       </div>
     
       <div class="item">
-        <img src="/img/products/mobi.jpeg" alt="New York" style="height:700 ;width:1200;">
+        <a href="shop/3"><img src="/img/products/mobi.jpeg" alt="New York" style="height:700 ;width:1200;"></a>
         <div class="carousel-caption">
           <h3>Mobiles</h3>
-          <p>We love the Big Apple!</p>
+          <p>Best Deals!</p>
         </div>
       </div>
   

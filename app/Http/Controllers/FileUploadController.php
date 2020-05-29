@@ -98,6 +98,7 @@ class FileUploadController extends Controller
     }
     function update(Request $request)
     {
+        
         $request->validate([
             'file' => 'required|mimes:jpg,jpeg,png|max:2048',
             'name' => 'required',

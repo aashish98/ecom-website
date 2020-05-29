@@ -8,7 +8,10 @@
     <div class="boxx">
         <img src="{{asset('/img/products/'.$product->slug.'.jpeg')}}" alt="" width="300" height="300">
     </div>
-    
+    </br>
+</br>
+</br>
+</br>
 @endsection
 @section('sidebar')
 <div >
@@ -39,11 +42,12 @@
      <span>{{$product->name}}</span>
      </div>
 </ul>
+
 @endsection
 
 @section('mightLike')
 
-<h2>Take a look at thes sugesstions, You might also like.</h2>
+<h2>Take a look at these sugesstions, You might also like.</h2>
         <div class="grid-container ">
 
         @foreach($mightAlsoLike as $product)

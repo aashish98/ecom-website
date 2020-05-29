@@ -32,8 +32,6 @@
                             <th scope="col"> </th>
                             <th scope="col">Product</th>
                             <th scope="col">Details</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
                             <th> </th>
                         </tr>
@@ -44,8 +42,7 @@
                             <td><a href="{{route('shop.show', $item->model->slug)}}"><img src="{{asset('img/products/'.$item->model->slug.'.jpeg')}}" hright="100" width="100"/> </a></td>
                             <td><a href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></td>
                             <td>{{$item->model->details}}</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
+                            
                             <td class="text-right">₹{{$item->model->price}}</td>
                             
                             <form action="{{route('cart.destroy', $item->rowId)}}" method="post">
@@ -89,7 +86,7 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <a href="{{route('shop.index')}}"  class="btn btn-block btn-light"> Continue shopping</a>
+                    <a href="{{route('shop.index')}}"  class="btn btn-primary btn-block btn-lg"> Continue shopping</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                     <a href="{{route('checkout.index')}}"  class="btn btn-lg btn-block btn-success text-uppercase" >Checkout</a>
@@ -144,6 +141,9 @@
 <h3>You have  no items saved for later.</h3>
 
 @endif
+</br>
+</br>
+</br>
 
 
 @endsection
@@ -157,11 +157,12 @@
      <span>Shoping Cart</span>
      </div>
 </ul>
+
 @endsection
 
 @section('mightLike')
 
-<h4 style="color:blue">Take a look at thes sugesstions, You might also like.</h4>
+<h4 style="color:blue">Take a look at these sugesstions, You might also like.</h4>
         <div class="grid-container ">
 
         @foreach($mightAlsoLike as $product)

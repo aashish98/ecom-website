@@ -24,50 +24,58 @@
                 <div class="form-group" >
                     {{Form::label('fname', 'First Name')}} </br>
                     {{Form::Text('fname', '',['class'=>'form-control '])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('fname')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group" >
                     {{Form::label('lname', 'Last name')}} </br>
                     {{Form::Text('lname', '',['class'=>'form-control '])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('lname')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group" >
                     {{Form::label('email', 'E-Mail Address')}} </br>
                     {{Form::Text('email', '',['class'=>'form-control '])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('email')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group" >
                     {{Form::label('username', 'Username')}} </br>
                     {{Form::Text('username', '',['class'=>'form-control '])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('username')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group">
                     {{Form::label('password', 'Password')}} </br>
                     {{Form::password('password', ['class' => 'awesome form-control '])}}
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('password')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group">
                     {{Form::label('password2', 'Confirm Password')}} </br>
                     {{Form::password('password2', ['class' => 'awesome form-control ' ])}}
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('password2')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group" >
                     {{Form::label('phone', 'Phone No.')}} </br>
                     {{Form::Text('phone', '',['class'=>'form-control '])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('phone')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group" >
                     {{Form::label('bday', 'Enter Birthdate')}} </br>
                     {{Form::Text('bday', '',['class'=>'form-control','id'=>'fr'])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    @error('bday')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 
                 <div >
@@ -84,10 +92,6 @@
 </br></br>
 
 
-<div class="strike">
-   <span>copyrights</span>
-
-</div>
 
 @include('inc.footer');
 

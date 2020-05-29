@@ -40,6 +40,9 @@ class PagesController extends Controller
      public function getShoppp(){
         return view('shopcat');
     }
+    public function getProfile(){
+        return view('profile');
+    }
     
     
 }

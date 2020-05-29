@@ -10,24 +10,30 @@
 <body>
 
 <section class="container-fluid bgg">
-
+@if(session::get('alert'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+ {{Session::get('alert')}}
+</div>
+@endif
     <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-4">
         <a class="navbar-brand">Flashbuy</a> 
-     
+   
     {!! Form::open(['url' => 'signin/submit', 'class'=> 'form-conta', 'method' => 'post']) !!}
                 {{Form::token()}}
                 <div class="form-group" >
                     {{Form::label('email', 'E-Mail Address : ')}} </br>
                     {{Form::Text('email', '',['class'=>'form-control '])}} </br>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                            @error('email')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div class="form-group">
                     {{Form::label('password', 'Password : ')}} </br>
-                    {{Form::password('password', ['class' => 'awesome form-control ' , 'placeholder'=>  'atleast 6 characters' ])}}
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                    {{Form::password('password', ['class' => 'awesome form-control ' , 'placeholder'=>  'atleast 6 characters' ])}}</br>
+                            @error('password')
+                            <span style="color:red">* {{$message}}</span>
+                            @enderror
                 </div>
                 <div >
                 {{Form::submit('submit', ['class'=>'btn btn-primary btn-block' ])}}
@@ -43,7 +49,7 @@
    
 
 
-
+</br>
 <section class="container-fluid bgg">
 
     <section class="row justify-content-center">
@@ -57,10 +63,6 @@
          </section>
     </section>
 </section>
-
-<div class="strike">
-   <span style="text-align:center">copyrights</span>
-</div>
 
 @include('inc.footer')
 

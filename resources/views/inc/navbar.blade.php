@@ -4,6 +4,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{{asset('js/app.js')}}"></script>
+    
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
   
 </head>
@@ -11,9 +12,9 @@
 <div class="header">
 
 <div class="container-fluid mr-auto">
-<a href="#" style="margin-right: 10px" class="fa fa-facebook"></a>
-<a href="#" style="margin-right: 10px" class="fa fa-twitter"></a>
-<a href="#"  class="fa fa-google"></a>
+<a href="javascript:void(0);" style="margin-right: 10px" class="fa fa-facebook"></a>
+<a href="javascript:void(0);" style="margin-right: 10px" class="fa fa-twitter"></a>
+<a href="javascript:void(0);"  class="fa fa-google"></a>
 @if(Session::get('user'))
 <a class="nav-item nav-link " href="{{route('logout')}}" style="float:right">logout </a>
     @else
@@ -73,7 +74,7 @@
     </li>
     <li class="nav-item">
     @if(Session::get('user'))
-      <a class="nav-link" style="color:blue" href="">Welcome {{Session::get('user')}} </a>
+      <a class="nav-link" style="color:blue" href="">Welcome {{Session::get('user')[0]}} </a>
       
     @else
     <a   type="button" class="btn" data-toggle="modal" data-target="#myModal" style="color: grey   ">

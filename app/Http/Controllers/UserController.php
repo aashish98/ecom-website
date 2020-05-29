@@ -10,30 +10,37 @@ use App\User;
 use App\Product;
 use App\Category;
 
+use Crypt;
+
 
 
 class UserController extends Controller
 {
     public function signin(Request $req)
     {
-        
+        $req->validate([
+            'email' => 'required | email',
+            'password'=>'required | min:6 | max:12'
+        ]);
         $user = User::where("email",$req->input('email'))->get();
-        if($user[0]->password==$req->input('password') && $user[0]->role=='user')
+        if(Crypt::decrypt($user[0]->password)==$req->input('password') && $user[0]->role=='user')
         {
-            $req->session()->put('user',$user[0]->fname);
+            $use = [$user[0]->fname, $user[0]->email,$user[0]->role,$user[0]->id];
+            $req->session()->put('user',$use);
             return redirect('/home');
 
         }
 
-        else if($user[0]->password==$req->input('password') && $user[0]->role=='admin')
+        else if(Crypt::decrypt($user[0]->password)==$req->input('password') && $user[0]->role=='admin')
         {
-            $req->session()->put('admin',$user[0]->fname);
+            $use = [$user[0]->fname, $user[0]->email,$user[0]->role,$user[0]->id];
+            $req->session()->put('admin',$use);
             return redirect('/home');
         }
         else  
         {
             $req->session()->flash('alert','Invalid Email or password');
-            return redirect('/home');
+            return back();
         }
     }
     public function signup(Request $request)
@@ -41,11 +48,12 @@ class UserController extends Controller
         $this->validate($request, [
             'fname'=>'required',
             'lname'=>'required',
-            'email'=>'required',
-            'password'=>'required',
-            'password2'=>'required',
-            'phone'=>'required',
-            'bday'=>'required'
+            'username'=>'required',
+            'email'=>'required | email',
+            'password'=>'required | min:6 | max:12 ',
+            'password2'=>'required_with:password|same:password|min:6 | max:12',
+            'phone'=>'required|digits:10',
+            'bday'=>'required | date'
 
         ]);
         // return 'SUCCESS';
@@ -54,7 +62,8 @@ class UserController extends Controller
         $user->lname = $request->input('lname');
         $user->email = $request->input('email');
         $user->username = $request->input('username');
-        $user->password = $request->input('password');
+        $user->password=Crypt::encrypt($request->input('password'));
+
         $user->phone = $request->input('phone');
         $user->birthdate = $request->input('bday');
         
@@ -122,6 +131,32 @@ class UserController extends Controller
         return redirect('list');
 
     }
+    
+    public function updatePassword(Request $req)
+    {
+        $this->validate($req, [
+            'pass1'=>'required | min:6 | max:12',
+            'pass2'=>'required | min:6 | max:12 ',
+            'pass3'=>'required_with:password|same:pass2|min:6 | max:12',
+        ]);
+        $id = $req->input('id');
+        $pass2=Crypt::encrypt($req->input('pass2'));
+        $use = User::find($id);
+
+        if(Crypt::decrypt($use->password)==$req->input('pass1') && $use->id==$id)
+        {
+        $use->password=$pass2;
+        $use->save();
+        $req->session()->flash('status','Password Updated successfully');
+        return redirect('profile');
+        }
+        else
+        {
+            $req->session()->flash('alert','Your Previous password is incorrect');
+            return redirect('profile');
+        }
+    }
+    
 
 
 }
