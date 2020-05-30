@@ -73,18 +73,13 @@ Route::group(['middleware'=>'web'], function(){
     Route::resource('/orders', 'OrderController');
 });
 Route::get('welcome','PagesController@getWelcome');
-Route::view('/ssearch','/ssearch');
-Route::any('/search',function(){
-    $q = Input::get ( 'q' );
-    $product = Product::where('name','LIKE','%'.$q.'%')->get();
-    if(count($product) > 0)
-        return view('ssearch')->withDetails($product)->withQuery ( $q );
-    else return view ('ssearch    ')->withMessage('No Details found. Try to search again !');
-});
+
+
+Route::get('/ssearch','AutocompleteController@index');
+Route::post('/fetch','AutocompleteController@fetch')->name('autocomplete.fetch');
+Route::post('/fetchh','AutocompleteController@searchproduct')->name('search.product');
 
 Route::view('/index','/index');
-Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'AutoCompleteController@index'));
-Route::get('searchajax',array('as'=>'searchajax','uses'=>'AutoCompleteController@autoComplete'));
 
 // Auth::routes();
 

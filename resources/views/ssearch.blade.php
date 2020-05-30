@@ -1,33 +1,57 @@
-<form action="/search" method="POST" role="search">
-    {{ csrf_field() }}
-    <div class="input-group">
-        <input type="text" class="form-control" name="q"
-            placeholder="Search users"> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
+@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Ajax Autocomplete Textbox in Laravel using JQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <style type="text/css">
+   .box{
+    width:600px;
+    margin:0 auto;
+   }
+  </style>
+ </head>
+ <body>
+  <br />
+  <div class="container box">
+   
+   <div class="form-group">
+    <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Enter Product Name" />
+    <div id="productList">
     </div>
-</form>
-<div class="container">
-    @if(isset($details))
-        <p> The Search results for your query <b> {{ $query }} </b> are :</p>
-    <h2>Items details</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($details as $user)
-            <tr>
-                <td>{{$user->name}}</td>
-                <td>₹{{$user->price}}/-</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    @endif
-</div>
+   </div>
+   {{ csrf_field() }}
+  </div>
+ </body>
+</html>
+
+<script>
+  
+  $(document).ready(function(){
+
+$('#name').keyup(function(){ 
+       var query = $(this).val();
+       if(query != '')
+       {
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+         url:"{{ route('autocomplete.fetch') }}",
+         method:"POST",
+         data:{query:query, _token:_token},
+         success:function(data){
+          $('#productList').fadeIn();  
+                   $('#productList').html(data);
+         }
+        });
+       }
+   });
+
+   $(document).on('click', 'li', function(){  
+       $('#name').val($(this).text());  
+       $('#productList').fadeOut();  
+   });  
+
+});
+    </script>
+
+

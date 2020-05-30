@@ -4,7 +4,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{{asset('js/app.js')}}"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
   
 </head>
@@ -85,26 +86,51 @@
   
   </ul>
   <div style = "float:right">
-  <form class="form-inline" action="/action_page.php">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+  <form class="form-inline" action="{{route('search.product')}}" method="post">
+    <input class="form-control mr-sm-2" type="text" name="name" id="name" placeholder="Search" list="productList">
+    <datalist id="productList">
+      
+    </datalist>
+    {{csrf_field()}}
     <button class="btn btn-success" type="submit">Search</button>
   </form>
   </div>
- 
 </nav>
-
 </div>
 </body>
 <script>
-$(function() {
 
+$(function() {
 $('[data-toggle="modal"]').hover(function() {
   var modalId = $(this).data('target');
   $(modalId).modal('show');
-
+});
 });
 
-});
+$(document).ready(function(){
 
+$('#name').keyup(function(){ 
+       var query = $(this).val();
+       if(query != '')
+       {
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+         url:"{{ route('autocomplete.fetch') }}",
+         method:"POST",
+         data:{query:query, _token:_token},
+         success:function(data){
+          $('#productList').fadeIn();  
+                   $('#productList').html(data);
+         }
+        });
+       }
+   });
+
+   $(document).on('click', 'li', function(){  
+       $('#name').val($(this).text());  
+       $('#productList').fadeOut();  
+   });  
+
+});
 </script>
 </html>
