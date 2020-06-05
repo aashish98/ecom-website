@@ -15,7 +15,9 @@
 @if(Session::get('user'))
 <div class="jumbotron text-center">
 <div class="container">
-<h1>How you Doing!!</h1>
+<h2>Want to Change your password!!</h2>
+
+<a class="btn btn-primary" href="profile" >Go to profile</a>
 </div>
 </div>
 
@@ -74,7 +76,6 @@ body {
 
 
 @section('sidebar')
-@if(!Session::get('user') && !Session::get('admin'))
 </br>
 <div class="jumbotron text-center">
 <div class="container">
@@ -85,20 +86,10 @@ body {
 </div>
 </div>
 <style>body {background-color: coral;}</style>
-@endif
 
-@if(Session::get('user'))
-</br>
-<div class="jumbotron text-center">
-<div class="container">
 
-<h2>Want to Change your password!!</h2>
-
-<a class="btn btn-primary" href="profile" >Go to profile</a>
-</div>
-</div>
 <style>body {background-color: coral;}</style>
-@endif
+
 @endsection
 
 

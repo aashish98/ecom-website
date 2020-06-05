@@ -21,7 +21,7 @@
 @if(Cart::count()>0)
 
 <h2>{{Cart::count() }} Item(s) in Shopping cart.</h2>
-
+<p>{{$vall}}</p>
 <div class="container mb-4">
     <div class="row">
         <div class="col-12">
@@ -122,10 +122,7 @@
                                 {{method_field('DELETE')}}
                                 <td class="text-right"><button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                             </form>
-                            <form action="{{route('saveForLater.switchToCart', $item->rowId)}}" method="post">
-                                {{csrf_field()}}
-                                <td class="text-right"><button type="submit" class="btn btn-outline-dark"> Move To Cart</button> </td>
-                            </form>
+                            
                         </tr>
                     
            

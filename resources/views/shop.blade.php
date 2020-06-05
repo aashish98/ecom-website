@@ -24,8 +24,8 @@
     <div class="grid-container">
     @foreach($products as $product)
             <div>
-                    <a href="{{route('shop.show', $product->slug)}}"><img src="{{asset('/img/products/'.$product->slug.'.jpeg')}}" alt="" width="193" height="130"></a>
-                    <a href="{{route('shop.show', $product->slug)}}"><div class="product-name">{{$product->name}}</div></a>
+                    <a href="{{route('shop.show',['product' => $product->slug])}}"><img src="{{asset('/img/products/'.$product->slug.'.jpeg')}}" alt="" width="193" height="130"></a>
+                    <a href="{{route('shop.show',['product' => $product->slug])}}"><div class="product-name">{{$product->name}}</div></a>
                     <div class="product-name">₹{{$product->price}}.99</div>
                 </div>
             @endforeach

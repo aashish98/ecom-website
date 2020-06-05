@@ -62,6 +62,7 @@ class UserController extends Controller
         $user->lname = $request->input('lname');
         $user->email = $request->input('email');
         $user->username = $request->input('username');
+        
         $user->password=Crypt::encrypt($request->input('password'));
 
         $user->phone = $request->input('phone');
@@ -89,8 +90,8 @@ class UserController extends Controller
         $data = Product::all()->where('cat_id', '=', $id);
         if(count($data)<1)
         {
-
-            return redirect('list')->with('success','No Products.'); 
+            $pada = array('cat_id' => $id);
+            return view('productList')->with($pada); 
         }
         else{
         return view('productList',["data"=>$data]); 

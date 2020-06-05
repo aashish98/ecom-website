@@ -33,7 +33,7 @@ class CheckoutController extends Controller
         $total = $request->input('money');
         $replaced = Str::replaceArray(',', [''], $total);
         $final = strstr($replaced, '.', true) ?: $replaced;
-        \Stripe\Stripe::setApiKey('sk_test_tluYw24Lkcl6qM7cIzm79g1C00ractVLO7');
+        \Stripe\Stripe::setApiKey('sk_test_BUTj1DTkBYXgRDHkB3tMcIK500lK4x7mVq');
         $token = $_POST['stripeToken'];
         try{
         $customer = \Stripe\Customer::create(array(

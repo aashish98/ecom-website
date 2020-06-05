@@ -66,16 +66,18 @@ Route::group(['middleware'=>'web'], function(){
     Route::get('/shop', 'ShopController@index')->name('shop.index');
 
     Route::get('/messageList', 'MessagesController@getMessages')->name('messageList');
+    Route::get('/taxChange', 'MessagesController@getTax')->name('taxChange');
+
+    Route::post('/taxChange/submit', 'MessagesController@setTax')->name('setTax');
 
 
-    Route::get('/shop/{id}', 'ShopController@showcat')->name('cat.show')->where('id', '[0-9]+');
+    Route::get('/shop/{id}', 'ShopController@showcat')->name('cat.show')->where('id', '[0-20]');
     Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
     Route::resource('/orders', 'OrderController');
 });
 Route::get('welcome','PagesController@getWelcome');
 
 
-Route::get('/ssearch','AutocompleteController@index');
 Route::post('/fetch','AutocompleteController@fetch')->name('autocomplete.fetch');
 Route::post('/fetchh','AutocompleteController@searchproduct')->name('search.product');
 

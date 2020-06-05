@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Message;
 use App\User;
+use Config;
 
 use Illuminate\Support\Facades\DB;
 
@@ -33,6 +34,23 @@ class MessagesController extends Controller
         $messages = Message::all();
         return view('messageList')->with('messages',$messages);
     }
+    public function getTax()
+    {
+        $value = config('cart.tax');
+        return view('tax')->with(['value'=>$value]);
+    }
+    public function setTax(Request $req)
+    {
+        $this->validate($req, [ 
+            'tax'=>'required | min:1 | max:100 '
+           ]);
+          
+        $val = $req->input('tax');
+        config::set(['cart.tax' => $val]);
+        $value = config::get('cart.tax');
+        return view('tax')->with(['success'=>'updated successfully', 'value'=>$value]);
+        
+    }
     public function actionedit(Request $request, $id)
     {
 
@@ -41,5 +59,6 @@ class MessagesController extends Controller
             return redirect('messageList');
 
     }
+    
    
 }

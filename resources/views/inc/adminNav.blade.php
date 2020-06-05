@@ -19,6 +19,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('messageList')}}">Messages</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('taxChange')}}">Change Tax %</a>
+      </li>
     </ul>
 <a class="nav-item nav-link " href="logout" style="float:right">logout </a>
 

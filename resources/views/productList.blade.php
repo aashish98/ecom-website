@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(!empty($data))
 <table class="table">
   <thead>
     <tr>
@@ -16,6 +17,7 @@
     </tr>
   </thead>
   <tbody>
+
   @foreach($data as $item)
     <tr>
       <td>{{$item->name}}</td>
@@ -31,6 +33,10 @@
     </tr>
     @endforeach 
   </tbody>
+  @else<div class="alert alert-success alert-block">
+                <strong>No Products are in this Category</strong>
+        </div>
+  @endif
 
 </table>
 @endsection
@@ -45,6 +51,7 @@
 </br>
 
 <body>
+
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >
     Add A Product 
@@ -61,8 +68,15 @@
         <div class="modal-body">
                 <form method="post" action="{{ route('file.uploadProduct.post') }}" enctype="multipart/form-data">
 @csrf
+
   <div class="form-group">
+@if(!empty($data))
   <input type="hidden" name="cat_id" value="{{$item->cat_id}}">
+  @else
+
+  <input type="hidden" name="cat_id" value="{{$cat_id}}">
+  @endif
+
     <label >Enter Name</label>
     <input type="text" class="form-control" placeholder="Name" name="name">
   </div>
@@ -124,6 +138,7 @@
     </div>
   </div>
 </body>
+
 
 
 <script>

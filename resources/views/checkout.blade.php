@@ -133,7 +133,7 @@
 
 @section('extra-js')
 <script>
-var stripe = Stripe('pk_test_I2N0oSJegn9meRwagT9jfEPc005tBitdPa');
+var stripe = Stripe('pk_test_cYjCkVhpEHSO6hBUpw7onKAQ00tD3gwEQx');
 
 var elements = stripe.elements();
 

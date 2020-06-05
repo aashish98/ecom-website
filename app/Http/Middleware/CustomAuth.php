@@ -16,11 +16,11 @@ class CustomAuth
     public function handle($request, Closure $next)
     {
         $path = $request->path();
-        if(($path=='signin' || $path=='signup') && (Session::get('user')))
+        if(($path=='signin' || $path=='signup') && (Session::get('user') || Session::get('admin')))
         {
             return redirect('/');
         }
-        else if(($path=='about' || $path=='cart' || $path=='contact'|| $path=='messages')&& (!Session::get('user')))
+        else if(($path=='about' || $path=='cart' || $path=='contact'|| $path=='messages' || $path=='messageList')&& (!Session::get('user')))
         {
             return redirect('signin');
         }
