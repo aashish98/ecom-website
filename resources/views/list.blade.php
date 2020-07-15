@@ -34,7 +34,10 @@
 
       <td><img src="{{asset('/img/products/'.$item->slug.'.jpeg')}}" alt="" width="100" height="100"></td>
       <td>
-      <a href="edit/{{$item->id}}"><i class="fa fa-edit" style="font-size:48px;"></i></a>
+      <a href="edit/{{$item->id}}"><i class="fa fa-edit" style="font-size:35px;"></i></a>
+
+      <a href="deletee/{{$item->id}}"><i class="fa fa-trash" style="font-size:35px; color:red"></i></a>
+
       </td>
      
     </tr>
@@ -63,6 +66,12 @@
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >
     Add A Category 
+  </button>
+  </br>
+  </br>
+
+  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModa" >
+    deleted categories..
   </button>
 
   <!-- Modal -->
@@ -131,6 +140,56 @@
     </div>
   </div>
 </body>
+
+
+
+
+<div class="modal fade" id="myModa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Deleted Categories</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         
+        </div>
+        <div class="modal-body">
+        <table class="table">
+  <thead>
+    <tr style="color:grey">
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+  
+  @foreach($secdata as $item)
+    <tr>
+      <th scope="row">*</th>
+      <td>{{$item->name}}</td>
+
+      <td><img src="{{asset('/img/products/'.$item->slug.'.jpeg')}}" alt="" width="100" height="100"></td>
+      <td>
+      <a href="addback/{{$item->id}}">add back to list</a>
+      </td>
+     
+    </tr>
+    @endforeach 
+  </tbody>
+
+</table> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 
 
 <script>

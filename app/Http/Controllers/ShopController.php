@@ -16,16 +16,22 @@ class ShopController extends Controller
     public function index()
     {
         
-        $categories = Category::all();
+        $categories = Category::all()->where('status','=','1');
         $products = Product::inRandomOrder()->take(9)->get();
         return view('shop')->with('products', $products)->with('categories', $categories);
 
     }
     public function showcat($id)
     {
-        $categories = Category::all();
+        $categories = Category::all()->where('status','=','1');
         $product = Product::all()->where('cat_id', '=', $id);
+        if(count($product)>0)
+        {
         return view('shopcat')->with('product', $product)->with('categories', $categories);
+        }
+        else{
+            return view('shopcat')->with('success','no products available!!')->with('categories', $categories);
+        }
     }
 
     public function show($slug)

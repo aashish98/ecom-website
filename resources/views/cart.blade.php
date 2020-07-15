@@ -21,7 +21,7 @@
 @if(Cart::count()>0)
 
 <h2>{{Cart::count() }} Item(s) in Shopping cart.</h2>
-<p>{{$vall}}</p>
+
 <div class="container mb-4">
     <div class="row">
         <div class="col-12">
@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(CArt::content() as $item)
+                        @foreach(Cart::content() as $item)
                         <tr>
                             <td><a href="{{route('shop.show', $item->model->slug)}}"><img src="{{asset('img/products/'.$item->model->slug.'.jpeg')}}" hright="100" width="100"/> </a></td>
                             <td><a href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></td>
@@ -75,7 +75,7 @@
                    
                     <div style="float:right; margin-right:20px;">
                         Subtotal</br>
-                        Tax(18%)</br>
+                        Tax({{$tax}}%)</br>
                         <h3>Total</h3>
                     </div>
                    

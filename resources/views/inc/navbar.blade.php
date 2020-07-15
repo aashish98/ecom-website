@@ -19,7 +19,7 @@
 @if(Session::get('user'))
 <a class="nav-item nav-link " href="{{route('logout')}}" style="float:right">logout </a>
     @else
-    <a href="/signup" style="float:right">Signup</a>
+    <a href="/signup" style="float:right">{{__('hindi.signup')}}</a>
     @endif
  
 </div>
@@ -33,10 +33,10 @@
         <!-- Modal body -->
         <div class="modal-body">
         <center>
-        <input type="button" class="btn btn-primary btn-block" value="Login" onclick="location.href='/signin'"></br>
+        <input type="button" class="btn btn-primary btn-block" value="{{__('hindi.Login')}}" onclick="location.href='/signin'"></br>
         </center>
-      New customer?
-      <a href="/signup">Start here. </a> 
+        {{__('hindi.New customer?')}}
+      <a href="/signup">{{__('hindi.Start here.')}} </a> 
      
       
           
@@ -60,14 +60,14 @@
       <a class="nav-link" href="/">Home</a>
     </li>
     <li class="nav-item {{Request::is('about') ? 'active' :''}}">
-      <a class="nav-link" href="{{route('shop.index')}}">Shop</a>
+      <a class="nav-link" href="{{route('shop.index')}}">{{__('hindi.shop')}}</a>
     </li>
     <li class="nav-item {{Request::is('contact') ? 'active' :''}}">
-      <a class="nav-link"  href="/contact">Contact</a>
+      <a class="nav-link"  href="/contact">{{__('hindi.contact')}}</a>
     </li>
    
   <li class="nav-item ">
-      <a class="nav-link fa fa-cart-plus" style="font-size:20px" href="{{route('cart.index')}}">cart 
+      <a class="nav-link fa fa-cart-plus" style="font-size:20px" href="{{route('cart.index')}}">{{__('hindi.cart')}} 
       @if(Cart::instance('default')->count()>0)
       <span class="badge badge-pill badge-warning">{{Cart::instance('default')->count()}}</span>
       @endif
@@ -79,7 +79,7 @@
       
     @else
     <a   type="button" class="btn" data-toggle="modal" data-target="#myModal" style="color: grey   ">
-  Hello. Sign in
+  {{__('hindi.Hello. sign in')}}
 </a>
     @endif
   </li>
@@ -87,12 +87,12 @@
   </ul>
   <div style = "float:right">
   <form class="form-inline" action="{{route('search.product')}}" method="post">
-    <input class="form-control mr-sm-2" type="text" name="name" id="name" placeholder="Search" list="productList">
+    <input class="form-control mr-sm-2" type="text" name="name" id="name" placeholder="{{__('hindi.search')}}" list="productList">
     <datalist id="productList">
       
     </datalist>
     {{csrf_field()}}
-    <button class="btn btn-success" type="submit">Search</button>
+    <button class="btn btn-success" type="submit">{{__('hindi.search')}}</button>
   </form>
   </div>
 </nav>

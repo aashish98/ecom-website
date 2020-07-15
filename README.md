@@ -77,3 +77,33 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## How to run on your system
+
+1) After downloading the zip, locate the extracted file on terminal and run commands 
+    ----- composer install
+2) enter your database details in .env.example and copy .env.example file .env on root folder
+    ----- cp .env.example .env
+3)  ----- php artisan key:generate
+4)  ----- php artisan serve
+5) Create one user from postgres terminal as admin 
+    ----- insert into users (fname, lname, username, email, password, phone, role, birthdate) values ('anki','khantwal','admin','admin@test.com','eyJpdiI6Ilh6UGVKZWhST1lUMFg3a3pWOHVzRWc9PSIsInZhbHVlIjoiblRlUm9ldEdsaHRvb0JMM1JobjZNUT09Iiwi
+bWFjIjoiNjVhYWVkZGU2ZmVmNzU0ODlmMDgyMzM5ZGNmODY4NmVhOWQzMDIyYzZmNzJjYmM4MTVhNTQ4ZDkzYmQxNDhiNyJ9','1212121212','admin','1994-12-12');
+by running this commmand, id = "admin@test.com", password= "asdasd".
+
+## website
+
+While logged in as admin you can :
+    1) add, edit, update and remove categories and products,
+    2) Check report messages by users,
+    3) Change password in profile  module,
+    4) change tax percentage,
+
+While logged in as user : 
+    1) add products to cart,
+    2) buy,
+    3) change password,
+    4) search products by names,
+    5) search products by categories,
+
+and there are some other modules as login, registration etc.

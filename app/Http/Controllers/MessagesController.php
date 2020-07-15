@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Message;
 use App\User;
 use Config;
+Use App\AdminSettings;
 
 use Illuminate\Support\Facades\DB;
 
@@ -46,9 +47,15 @@ class MessagesController extends Controller
            ]);
           
         $val = $req->input('tax');
-        config::set(['cart.tax' => $val]);
-        $value = config::get('cart.tax');
-        return view('tax')->with(['success'=>'updated successfully', 'value'=>$value]);
+        $conTax = AdminSettings::where('label','config.tax')->first();
+        if(empty($conTax))
+        {
+            $conTax = new AdminSettings;
+            $conTax->label="config.tax";
+        }
+        $conTax->value=$val;
+        $conTax->save();
+        return view('tax')->with(['success'=>'updated successfully', 'value'=>$val]);
         
     }
     public function actionedit(Request $request, $id)

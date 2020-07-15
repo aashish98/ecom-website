@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\AdminSettings;
 
 class TaxServiceProvider extends ServiceProvider
 {
@@ -23,9 +24,17 @@ class TaxServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('*', function($view) {
-            $vd = 'My test';
-            return $view->with('vall', $vd);
-        });
+        
+            $tax = \Request::get('tax');
+            if(!empty($tax))
+            {
+                config(['cart.tax'=>$tax]);
+            }
+            else
+            {
+                $taxx = AdminSettings::where('label','config.tax')->value('value');
+                config(['cart.tax'=>$taxx]);
+            }
+        
     }
 }

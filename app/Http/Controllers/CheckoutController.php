@@ -24,8 +24,8 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-
-        return view('checkout');
+        $tax = Config('cart.tax');
+        return view('checkout')->with(['tax'=> $tax]);
 
     }
     public function chargePayment(Request $request)

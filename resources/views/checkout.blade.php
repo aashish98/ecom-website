@@ -87,7 +87,7 @@
                    
                     <div style="float:right; margin-right:20px;">
                         Subtotal</br>
-                        Tax(18%)</br>
+                        Tax({{$tax}}%)</br>
                         <h3>Total</h3>
                     </div>
                    

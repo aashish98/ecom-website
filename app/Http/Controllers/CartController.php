@@ -17,7 +17,8 @@ class CartController extends Controller
     {
 
         $mightAlsoLike = Product::mightAlsoLike()->get();
-        return view('cart')->with('mightAlsoLike', $mightAlsoLike);
+        $tax = Config('cart.tax');
+        return view('cart')->with('mightAlsoLike', $mightAlsoLike)->with(['tax'=> $tax]);
     }
 
     /**

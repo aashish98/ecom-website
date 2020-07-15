@@ -35,6 +35,10 @@ Route::group(['middleware'=>'web'], function(){
     Route::get('/list/editProduct/{id}','FileUploadController@editProduct');
     Route::post('/list/editProduct/{id}','FileUploadController@updateProduct');
     Route::post('/edit/{id}', 'FileUploadController@update')->name('update');
+    Route::get('/deletedCat/{id}', 'UserController@softDelete')->name('deletedCat');
+    Route::get('/addback/{id}', 'UserController@addback');
+    Route::get('/deletee/{id}', 'UserController@softDelete');
+    Route::post('/editProduct/{id}', 'FileUploadController@updateProduct')->name('updateProduct');
     Route::get('/list/delete/{id}','FileUploadController@delete');
     Route::post('/messageList/softDelete/{id}','MessagesController@softDelete');
     Route::get('/actionedit/{id}', 'MessagesController@actionedit');
@@ -71,7 +75,7 @@ Route::group(['middleware'=>'web'], function(){
     Route::post('/taxChange/submit', 'MessagesController@setTax')->name('setTax');
 
 
-    Route::get('/shop/{id}', 'ShopController@showcat')->name('cat.show')->where('id', '[0-20]');
+    Route::get('/shop/{id}', 'ShopController@showcat')->name('cat.show')->where('id', '[0-9]+');
     Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
     Route::resource('/orders', 'OrderController');
 });

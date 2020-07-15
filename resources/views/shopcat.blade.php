@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
 <style>
 
 .grid-container{
@@ -22,6 +25,7 @@
 
 <section>
     <div class="grid-container">
+    @if(!empty($product))
     @foreach($product as $pro)
             <div>
                     <a href="{{route('shop.show', $pro->slug)}}"><img src="{{asset('/img/products/'.$pro->slug.'.jpeg')}}" alt="" width="193" height="130"></a>
@@ -29,8 +33,15 @@
                     <div class="pro-name">₹{{$pro->price}}.99</div>
                 </div>
             @endforeach
+            @else
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+ 
+No products available!!
+</div>
+            @endif
     </div>
 </section>
+
 @endsection
 
 @section('sidebar')

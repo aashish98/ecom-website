@@ -36,9 +36,9 @@
 <div class="jumbotron text-center">
 <div class="container">
 
-<h1>welcome to our site</h1>
-<p class="lead">Signin for best experience</p>
-<a class="btn btn-primary" href="signin" >Sign in</a>
+<h1>{{__('hindi.welcome to our site')}}</h1>
+<p class="lead">{{ __('hindi.Signin for best experience')}}</p>
+<a class="btn btn-primary" href="signin" >{{__('hindi.sign in')}}</a>
 </div>
 </div>
 @endif
@@ -72,17 +72,20 @@ body {
        
 @endsection
 
-
-
-
 @section('sidebar')
+@if(!Session::get('admin'))
 </br>
 <div class="jumbotron text-center">
 <div class="container">
 
-<h2>Head straight to shopping!!</h2>
 
-<a class="btn btn-primary" href="shop" >Shop</a>
+  
+<h2>{{__('hindi.Head straight to shopping')}}</h2>
+
+<a class="btn btn-primary" href="shop" >{{__('hindi.shop')}}</a>
+ 
+ @endif
+
 </div>
 </div>
 <style>body {background-color: coral;}</style>

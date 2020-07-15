@@ -80,7 +80,7 @@
 
 			<div class="row text-center text-xs-center text-sm-left text-md-left" >
 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Get to know us</h5>
+					<h5>{{__('hindi.Get to know us')}}</h5>
 					<ul class="list-unstyled quick-links">
 						<li><a href="/home"><i class="fa fa-angle-double-right"></i>Home</a></li>
 						<li><a href="javascript:void(0);"><i class="fa fa-angle-double-right"></i>About</a></li>
@@ -91,7 +91,7 @@
           <!-- <div class="p-3 mb-2 bg-primary text-white">.bg-primary</div> -->
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Connect  with us</h5>
+					<h5>{{__('hindi.Connect with us')}}</h5>
 					<ul class="list-unstyled quick-links">
 						<li><a href="javascript:void(0);"><i class="fa fa-angle-double-right"></i>Facebook</a></li>
 						<li><a href="javascript:void(0);"><i class="fa fa-angle-double-right"></i>Twitter</a></li>
@@ -99,7 +99,7 @@
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Let us help you </h5>
+					<h5>{{__('hindi.Let us help you')}} </h5>
 					<ul class="list-unstyled quick-links">
 						<li><a href="javascript:void(0);"><i class="fa fa-angle-double-right"></i>Your Account</a></li>
 						<li><a href="/messages"><i class="fa fa-angle-double-right"></i>Returns Centre</a></li>

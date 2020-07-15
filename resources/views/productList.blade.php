@@ -26,8 +26,8 @@
       <td style="text-align:center; color:grey">₹{{$item->price}}</td>
 
       <td>
-      <a href="delete/{{$item->id}}"><i class="fa fa-trash" style="font-size:48px;"></i></a>
-      <a href="editProduct/{{$item->id}}"><i class="fa fa-edit" style="font-size:48px;"></i></a>
+      <a href="delete/{{$item->id}}"><i class="fa fa-trash" style="font-size:35px; color:red"></i></a>
+      <a href="editProduct/{{$item->id}}"><i class="fa fa-edit" style="font-size:35px;"></i></a>
       </td>
      
     </tr>
@@ -82,7 +82,7 @@
   </div>
   <div class="form-group">
     <label >Enter Details</label>
-    <input type="text" class="form-control" placeholder="Details" name="details">
+    <input type="text" class="form-control" placeholder="Details" name="detail">
   </div>
   <div class="form-group">
     <label >Enter Descrition</label>

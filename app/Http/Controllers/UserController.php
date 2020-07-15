@@ -81,8 +81,23 @@ class UserController extends Controller
     }
     function catList()
     {
-        $data = Category::all();
-        return view('list',["data"=>$data]); 
+        $data = Category::all()->where('status','=','1');
+        $secdata = Category::all()->where('status','=','0');
+        return view('list',["data"=>$data, "secdata"=>$secdata]); 
+    }
+    function softDelete($id)
+    {
+        $cat = Category::find($id);
+        $cat->status='0';
+        $cat->save();
+        return redirect('list');
+    }
+    function addback($id)
+    {
+        $cat = Category::find($id);
+        $cat->status='1';
+        $cat->save();
+        return redirect('list');
     }
    
     function show($id)
@@ -99,7 +114,6 @@ class UserController extends Controller
     }
     function add(Request $req)
     {
-        // return  $req->input();
         $cat = new Category;
         $cat->name=$req->input('name');
         $cat->email=$req->input('details');

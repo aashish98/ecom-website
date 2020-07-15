@@ -16,7 +16,7 @@
   
   @foreach($messages as $mes)
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">*</th>
       <td>{{$mes->name}}</td>
       <td>{{$mes->email}}</td>
       <td>{{$mes->message}}</td>
@@ -26,8 +26,7 @@
                         <td><a href="actionedit/{{ $mes->id }}"><input type="submit" name="pending" value="Pending"
                                                                          class="btn btn-warning"></a></td>
                     @else
-                        <td><input type="submit" name="update" value="Approved"
-                                                                   class="btn btn-success"></td>
+                        <td><span style="color:green">Approved</span></td>
                     @endif
     </tr>
   @endforeach

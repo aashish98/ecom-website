@@ -11,18 +11,28 @@
 @endif
 <div class="col-sm-6">
 <h1> Edit Product</h1>
-<form method="post" action="update">
+<form method="post" action="updateProduct" enctype="multipart/form-data">
 @csrf
   <div class="form-group">
 
   <input type="hidden" value="{{$data->id}}" name="id">
     <label >Enter Name</label>
 
-    <input type="text" class="form-control" placeholder="Name" value="{{$data->name}}" name="name">
+    <input type="text" class="form-control"  value="{{$data->name}}" name="name">
   </div>
   <div class="form-group">
     <label >Enter details</label>
-    <input type="text" class="form-control" placeholder="details" name="details" value="{{$data->details}}">
+    <input type="text" class="form-control"   value="{{$data->details}}" name="details">
+  </div>
+  <div class="form-group">
+    <label >Enter description</label>
+
+    <input type="text" class="form-control" name="description" value="{{$data->description}}">
+  </div>
+  <div class="form-group">
+    <label >Enter Proce</label>
+
+    <input type="text" class="form-control" name="price" value="{{$data->price}}">
   </div>
  <div>
   <label for="">previous image</label><br>
@@ -57,7 +67,7 @@
             <div class="row">
   
                 <div class="col-md-6">
-                    <input type="file" name="fileProduct" class="form-control">
+                    <input type="file" name="file" class="form-control">
                 </div>
    
             </div>
